@@ -35,7 +35,7 @@ export default function Home() {
             <SearchForm />
           </div>
 
-          <div className="w-full pt-6 backdrop-blur-sm bg-white/30 dark:bg-black/30 p-4 rounded-xl">
+          <div className="w-full max-w-4xl mx-auto pt-6 backdrop-blur-sm bg-white/50 p-4 rounded-xl">
             <h2 className="text-lg font-medium mb-4">After you search, you'll discover:</h2>
             <div className="flex flex-col md:flex-row gap-4 md:gap-8 max-w-3xl mx-auto">
               <div className="flex items-start gap-3">

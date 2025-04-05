@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { ModeToggle } from "./mode-toggle"
 import { Button } from "./ui/button"
 import { Recycle } from "lucide-react"
 
@@ -23,7 +22,6 @@ export default function Header() {
           </Link>
         </nav>
         <div className="flex items-center gap-2">
-          <ModeToggle />
           <Button asChild variant="outline" className="hidden md:flex">
             <Link href="/contact">Contact</Link>
           </Button>
