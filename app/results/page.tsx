@@ -7,15 +7,15 @@ interface ResultsPageProps {
   searchParams: { q?: string }
 }
 
-export function generateMetadata({ searchParams }: ResultsPageProps): Metadata {
-  const query = searchParams.q || ""
+export async function generateMetadata({ searchParams }: ResultsPageProps): Promise<Metadata> {
+  const query = searchParams?.q || ""
   return {
     title: query ? `Results for "${query}" | RecycleRight SG` : "Search Results | RecycleRight SG",
   }
 }
 
-export default function ResultsPage({ searchParams }: ResultsPageProps) {
-  const query = searchParams.q || ""
+export default async function ResultsPage({ searchParams }: ResultsPageProps) {
+  const query = searchParams?.q || ""
   const results = query ? searchRecyclableItems(query) : []
 
   return (
@@ -27,14 +27,24 @@ export default function ResultsPage({ searchParams }: ResultsPageProps) {
 
       {query ? (
         <>
-          <p className="text-muted-foreground mb-6">
-            Showing results for <span className="font-medium text-foreground">"{query}"</span>
-          </p>
-
           {results.length > 0 ? (
             <div className="space-y-8">
+              <div className="flex justify-center w-full">
+                <div className="w-full max-w-3xl">
+                  <p className="text-muted-foreground mb-2">
+                    Showing results for <span className="font-medium text-foreground">"{query}"</span>
+                  </p>
+                </div>
+              </div>
+              
               {results.map((item) => (
-                <ResultsDisplay key={item.id} item={item} />
+                <div key={item.id} className="flex flex-col">
+                  <div className="flex justify-center w-full">
+                    <div className="w-full max-w-3xl">
+                      <ResultsDisplay item={item} />
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           ) : (
